@@ -18,7 +18,7 @@ super + n
 
 ##---------- Applications ----------##
 
-#browser
+# Browser
 super + w
   firefox
 
@@ -56,20 +56,22 @@ ctrl + Print
 	takeshot --win
 
 # Take screenshot of area
-#ctrl + alt + Print
 super + shift + s
-    scrot -s '$HOME/Pictures/Screenshots/screenshot_%Y%m%d_%H%M%S.png'
+    scrot -s ~/Pictures/Screenshots/screenshot_%Y%m%d_%H%M%S.png
+
 # Brighness control
 XF86MonBrightness{Up,Down}
-	brightness{ --inc, --dec}
-	
+	brightnessctl s 10{+,-}	
 # Volume control
-XF86Audio{RaiseVolume,LowerVolume}
-	volume{ --inc, --dec}
+XF86AudioRaiseVolume
+	amixer set Master 5%+
+
+XF86AudioLowerVolume
+	amixer set Master 5%-
 
 XF86AudioMute
-	volume --toggle
-	
+	amixer set Master {mute, unmute}
+
 # Music control
 XF86Audio{Next,Prev,Play,Stop}
 	mpc {next,prev,toggle,stop}
